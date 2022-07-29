@@ -1,0 +1,14 @@
+<!--this is the home page of fdms  -->
+
+{% extends "fdms/bootstarpindex.html" %}
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header %}
+{{ wlc }}
+<br/>
+Your IP address is {{remote_addr}}
+<br>
+Your User Agent is {{user_agent}}
+{% endblock header %}

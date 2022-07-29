@@ -1,0 +1,9 @@
+{% extends "fdms/templatew3css.html" %}
+
+{% block title %}
+{{ title|default:"ReadFdms" }}
+{% endblock title %}
+
+{% block header %}
+{{ wlc|default:"Read the FDMS" }}
+{% endblock header %}

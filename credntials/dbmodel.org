@@ -1,0 +1,129 @@
+#+TITLE: CREDENTIALS APP
+
+#+AUTHOR: malvin
+#+DATE: 10.01.2019
+
+<<<<<<< HEAD
+=======
+** Project Methodology
+
+     1. First  define models representing your business informations (i.e. [[file:~/ws/lrc/projects/synolrc/djngo_proj/credntials/models.py::##%20All%20about%20Djngo%20Models][SynoLrc_Credential Model module]] )
+	- Define __str__() function to represent the objects as string. 
+     2. Next create relationship in the models ( use foreign keys)
+     3. Register your model in the admin site (repr by [[file:admin.py::##%20admin.py%20module][admin.py module]]) 
+     4. Create your Views in [[file:views.py::##%20Crednetial%20app%20views][view.py]]
+	1. A view file receives request data along with pattern captured data.
+	2. It will return a HttpResponse object with the request data or return Http404(page not found) data
+	3. It will invoke the template, load the template and return the view with data to urlconf which will pass it to client(browser)
+     5. Create your URLconf module which maps the urls to various views of the application
+
+
+
+
+
+*** DONE create all the data models for this project
+
+
+
+>>>>>>> 8ad0486d7348401599dc843b272a7b0522a7fdf5
+# this file records all info for this project
+# The obejctive of this webapp is to record the following informations
+#     1. Credentials to login to various websites other that using Oauth or Single signon feature
+      2. The credentials will belong to a group ( family , friends)
+<<<<<<< HEAD
+	 
+*  Database models design
+
+   i) Institutions  - (will be a dictionary or list)                            
+=======
+
+*  Database models design
+*** i) Institutions  - (will be a dictionary or list of the names of the institutions)                            
+>>>>>>> 8ad0486d7348401599dc843b272a7b0522a7fdf5
+
+   | INSTITUTION DATAMODEL |                      |                    |
+   |-----------------------+----------------------+--------------------|
+   | PROPERTYNAME          | PROPERTY CONSTRAINTS | Examples           |
+   |-----------------------+----------------------+--------------------|
+<<<<<<< HEAD
+   | INSTNAME              | STRING               | SBI, ICI, MVD...   |
+   | INSTYPE               | STRING               | bank, govt, emails |
+   |-----------------------+----------------------+--------------------|
+   [[http://oncloudoffice.com:3000][onclouOBdoffice]]
+
+
+   
+   
+   
+      		    name of institution
+		    type - "bank", "email", "govt"
+
+  ii) instType    - Each type will have it own properties
+			 - Bank( Back name
+			 - Account type {sb, ca, rd ...)
+			 - Govt( DrivLic, RationCard, DigiLocker)
+
+			 
+  iii) AccHolders  - (users whose portfolio will be displayed)
+       		   - name of the holder
+		   - email id of the holder
+		   - mobile no
+
+   iv) Credntial  - ( all the information pertaining to a user)
+   		   - FK( AccHolder.name)
+		   - FK( Institution.type)
+		   - FK( Instiution.type.Type (sub type)
+		   - UID
+		   - pwd
+		   - Sec questions
+		   - Sec answer
+
+		     
+=======
+   | INSTYPE               | STRING               | bank, govt, emails |
+   | INSTNAME              | STRING               | SBI, ICI, MVD      |
+   | Address               |                      |                    |
+   |-----------------------+----------------------+--------------------|
+   |-----------------------+----------------------+--------------------|
+
+      [[HTTP://ONCLOUDOFFICE.COM:3000][
+ONCLOUDOFFICE]]
+
+
+
+*** II) RECORDTYPE    - EACH TYPE WILL HAVE IT OWN PROPERTIES
+			 - INSTNAME( BANK NAME, GOVT, EMAIL)
+			 - ACCOUNT TYPE {SB, CA, RD ...), DRIVLIC, RATIONCRD, DIGILOCK, PERSONALMAIL, OFFICIALMAIL)
+			 
+  | RECORD TYPE TABLE |                                 |                      |   |   |
+  | INSTNAME          | FOREIGN KEY                     | INSTITUTION.INSTNAME |   |   |
+  | RECTYPE           | SB, CA, RD, DRIVLIC, RATIONCARD |                      |   |   |
+  
+
+			 
+  III) ACCHOLDERS  - (USERS WHOSE PORTFOLIO WILL BE DISPLAYED)
+       		   - NAME OF THE HOLDER
+		   - EMAIL ID OF THE HOLDER
+		   - MOBILE NO
+
+   IV) CREDNTIAL  - ( ALL THE INFORMATION PERTAINING TO A USER)
+   		   - FK( ACCHOLDER.NAME)
+		   - FK( INSTITUTION.TYPE)
+		   - FK( INSTIUTION.TYPE.TYPE (SUB TYPE)
+		   - UID
+		   - PWD
+		   - SEC QUESTIONS
+		   - SEC ANSWER
+
+		     
+		   
+
+
+* Migration
+>>>>>>> 8ad0486d7348401599dc843b272a7b0522a7fdf5
+
+
+
+
+#+BIBLIOGRAPHY:
+[[https://docs.djangoproject.com/en/3.0/intro/overview/#design-your-model][Django Project Dox Official]]

@@ -1,0 +1,59 @@
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from .forms import Instform, BeneficiaryMF, InstitutionMF
+
+
+# Create your views here.
+# home page rendering
+def fdms_home(request):
+    wlcom = "Welcome to FDMS - Home"
+    context = {"wlc" : wlcom, 'title':"FDMS -Welcome! Home"}
+
+    return render(request, "fdms/welcome.html", context)
+#    return HttpResponse("<h2> Welcome to FDMS </h2>")
+
+# Read Page rending - normal non-model form
+def fdms_read(request):   # this view is not be used in this project
+    
+    if request.method == "POST":
+        form = Instform(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("thanks/")
+        
+    else:
+        form = Instform()
+    header = "Institution Info"
+    title = "Institution Page"
+
+    context = {'title':title, 'form':form, 'header':header}
+    return render(request, 'fdms/inst.html', context)
+
+def fdms_read_mf(request):
+    if request.method == "POST":
+        form_mf=InstitutionMF(request.POST)
+        
+        if form_mf.is_valid():
+            return HttpResponseRedirect("thanks/")
+    else:
+        form_mf = InstitutionMF()
+
+    title="InstitutionMF_Page"
+    header="Institution Db Info"
+    context={'title':title, 'header':header, "form":form_mf} 
+    return render(request, 'fdms/inst.html', context)
+
+def fdms_thanks(request):
+    return render(request, 'fdms/thanks.html')
+
+
+def fdms_create_benef_mf(request):
+    if request.method == 'POST':
+        benef = BeneficiaryMF(request.POST)
+        if benef.is_valid():
+            
+            benef.save()
+            return HttpResponseRedirect('/fdms/read/thanks/')
+    else:
+        benef=BeneficiaryMF()
+        
+    context={'form':benef}
+    return render(request, "fdms/create.html", context)

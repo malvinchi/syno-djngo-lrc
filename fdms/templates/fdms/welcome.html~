@@ -1,0 +1,11 @@
+<!--this is the form for reading the fixed deposits in db -->
+
+{% extends "fdms/templatew3css.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header %}
+{{ wlc }}
+{% endblock header %}

@@ -1,0 +1,9 @@
+#this is the url config module for fdms
+from django.urls import path
+from . import views
+
+urlpatterns = [path("", views.fdms_home, name='welcome'),
+               path("read/", views.fdms_read_mf, name="Institute"),
+               path("read/thanks/", views.fdms_thanks, name="ThankYou"),
+               path('create/', views.fdms_create_benef_mf, name='Create'),
+]
